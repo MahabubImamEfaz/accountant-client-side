@@ -1,0 +1,8 @@
+.hero-section {
+  background: rgb(163, 206, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(163, 206, 241, 1) 0%,
+    rgba(231, 236, 239, 1) 100%
+  );
+}
