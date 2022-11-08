@@ -1,6 +1,7 @@
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import About from "./About";
+import DisplayServices from "./DisplayServices";
 import "./Home.css";
 
 const Home = () => {
@@ -40,6 +41,8 @@ const Home = () => {
       </section>
       {/* about section */}
       <About></About>
+      {/* services section */}
+      <DisplayServices></DisplayServices>
     </div>
   );
 };
