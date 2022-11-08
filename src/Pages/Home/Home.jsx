@@ -17,10 +17,10 @@ const Home = () => {
               {/* Style will be inherited from the parent element */}
               <Typewriter
                 words={[
-                  "Professional",
+                  "Professional.",
                   "Adherence to Ethics.",
                   "Integrity & Confidentiality",
-                  "Analytical Skills",
+                  "Analytical Skills.",
                 ]}
                 loop={10}
                 cursor
