@@ -2,6 +2,7 @@ import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import About from "./About";
 import DisplayServices from "./DisplayServices";
+import Gallery from "./Gallery";
 import "./Home.css";
 
 const Home = () => {
@@ -43,6 +44,8 @@ const Home = () => {
       <About></About>
       {/* services section */}
       <DisplayServices></DisplayServices>
+      {/* gallery section */}
+      <Gallery></Gallery>
     </div>
   );
 };

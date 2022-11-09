@@ -17,7 +17,7 @@ const Header = () => {
           <div className="flex-none">
             <ul className="menu menu-horizontal p-0">
               <li className="text-white">
-                <Link>Item 1</Link>
+                <Link to="/">Login</Link>
               </li>
 
               <li className="text-white">
