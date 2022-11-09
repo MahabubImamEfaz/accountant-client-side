@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider";
 import "./Login.css";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
   return (
-    <div className="p-10">
+    <div className="p-10 bg-[#E7ECEF]">
       <h1 className="text-center text-3xl text-[#274C77] font-bold" mb-10>
         Login Form
       </h1>
       <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto">
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="form-group mb-6">
             <label className="form-label inline-block mb-2 text-gray-700">
               Email address
@@ -81,14 +97,16 @@ const Login = () => {
           </button>
           <div class="flex items-center justify-around pb-6 mt-5">
             <p class="mb-0 mr-2">Don't have an account?</p>
-            <button
-              type="button"
-              class="inline-block px-6 py-2 border-2 border-[#274C77] text-[#274C77]font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-              data-mdb-ripple="true"
-              data-mdb-ripple-color="light"
-            >
-              Sign Up
-            </button>
+            <Link to="/signup">
+              <button
+                type="button"
+                class="inline-block px-6 py-2 border-2 border-[#274C77] text-[#274C77]font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+              >
+                Sign Up
+              </button>
+            </Link>
           </div>
         </form>
       </div>
