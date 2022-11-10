@@ -8,6 +8,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import Services from "./Pages/Services/Services";
 import Service from "./Pages/Service/Service";
 import AddReview from "./Pages/Review/AddReview";
+import Reviews from "./Pages/Review/Reviews";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,6 +43,13 @@ function App() {
           element: <AddReview></AddReview>,
           loader: ({ params }) =>
             fetch(`http://localhost:5000/addreview/${params.id}`),
+        },
+        {
+          path: "/reviews",
+          element: <Reviews></Reviews>,
+        },
+        {
+          path: "/review",
         },
       ],
     },
