@@ -1,10 +1,26 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import "./Login.css";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, providerLogin } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const googleAuth = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleAuth)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const from = location.state?.from?.pathname || "/";
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,6 +31,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };
@@ -87,7 +104,9 @@ const Login = () => {
           <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
             <p className="text-center font-semibold mx-4 mb-0">OR</p>
           </div>
+
           <button
+            onClick={handleGoogleSignIn}
             type="submit"
             className="inline-block px-7 py-3 bg-[#274C77] text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
             data-mdb-ripple="true"
@@ -95,6 +114,7 @@ const Login = () => {
           >
             Login with Google
           </button>
+
           <div class="flex items-center justify-around pb-6 mt-5">
             <p class="mb-0 mr-2">Don't have an account?</p>
             <Link to="/signup">

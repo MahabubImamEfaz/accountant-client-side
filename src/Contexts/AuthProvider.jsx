@@ -4,12 +4,17 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
+
+const providerLogin = (provider) => {
+  return signInWithPopup(auth, provider);
+};
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -42,7 +47,7 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const authInfo = { user, loading, createUser, login, logOut };
+  const authInfo = { user, loading, createUser, login, logOut, providerLogin };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

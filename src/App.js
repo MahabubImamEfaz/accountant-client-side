@@ -10,6 +10,9 @@ import Service from "./Pages/Service/Service";
 import AddReview from "./Pages/Review/AddReview";
 import Reviews from "./Pages/Review/Reviews";
 import PrivateRoutes from "./Routes/PrivateRoutes";
+import Blog from "./Pages/Blog/Blog";
+import AlllReviews from "./Pages/Review/AlllReviews";
+import AddServices from "./Pages/Service/AddServices";
 
 function App() {
   const router = createBrowserRouter([
@@ -56,6 +59,18 @@ function App() {
               <Reviews></Reviews>
             </PrivateRoutes>
           ),
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>,
+        },
+        {
+          path: "/allreviews",
+          element: <AlllReviews></AlllReviews>,
+        },
+        {
+          path: "/addservices",
+          element: <AddServices></AddServices>,
         },
       ],
     },

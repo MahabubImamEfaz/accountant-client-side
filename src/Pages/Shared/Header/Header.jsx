@@ -38,7 +38,10 @@ const Header = () => {
               </li>
 
               <li className="text-white">
-                <Link>Item 3</Link>
+                <Link to="/blog">Blog</Link>
+              </li>
+              <li className="text-white">
+                <Link to="allreviews">All reviews</Link>
               </li>
             </ul>
           </div>
