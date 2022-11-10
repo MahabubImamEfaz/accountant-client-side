@@ -1,7 +1,8 @@
 import React from "react";
 
-const ReviewCard = ({ review }) => {
-  const { service, serviceName, reviewer, message, image } = review;
+const ReviewCard = ({ review, handleDelete }) => {
+  const { _id, service, serviceName, reviewer, message, image } = review;
+
   return (
     <div className="">
       <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
@@ -17,6 +18,7 @@ const ReviewCard = ({ review }) => {
               <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
             </svg>
             {message}
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -37,7 +39,12 @@ const ReviewCard = ({ review }) => {
           <p className="text-xl font-semibold leading-tight">{reviewer}</p>
           <div className="flex justify-around w-full mt-5">
             <button className="btn  bg-[#274C77]">Update</button>
-            <button className="btn bg-[#274C77]">Delete</button>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn bg-[#274C77]"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
