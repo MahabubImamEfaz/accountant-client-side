@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import About from "./About";
 import DisplayServices from "./DisplayServices";
@@ -34,9 +35,11 @@ const Home = () => {
             </span>
           </p>
           <div className="">
-            <button className="inline-block px-4 py-2.5 bg-[#274C77] text-white font-bold text-xl leading-tight uppercase rounded shadow-md hover:bg-[#A3CEF1] hover:shadow-lg focus:bg-[#A3CEF1] focus:shadow-lg focus:text focus:outline-none focus:ring-0 active:bg-[#274C77] active:shadow-lg transition duration-150 ease-in-out">
-              ALL SERVICES
-            </button>
+            <Link to="/services">
+              <button className="inline-block px-4 py-2.5 bg-[#274C77] text-white font-bold text-xl leading-tight uppercase rounded shadow-md hover:bg-[#A3CEF1] hover:shadow-lg focus:bg-[#A3CEF1] focus:shadow-lg focus:text focus:outline-none focus:ring-0 active:bg-[#274C77] active:shadow-lg transition duration-150 ease-in-out">
+                ALL SERVICES
+              </button>
+            </Link>
           </div>
         </div>
       </section>
