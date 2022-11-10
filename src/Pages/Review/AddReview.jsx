@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { json, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddReview = () => {
   const { _id, title, price } = useLoaderData();
@@ -19,7 +21,25 @@ const AddReview = () => {
       reviewer: name,
       email,
       image,
+      message,
     };
+
+    fetch("http://localhost:5000/reviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast("review placed");
+          form.reset();
+        }
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <div>
@@ -67,6 +87,7 @@ const AddReview = () => {
             value="Place Your Review"
           />
         </form>
+        <ToastContainer />;
       </div>
     </div>
   );
